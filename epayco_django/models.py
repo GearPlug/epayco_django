@@ -56,19 +56,19 @@ class AbstractFlagSegment(models.Model):
 
 
 class AbstractPaymentSegment(models.Model):
-    amount = models.CharField(max_length=32)
-    amount_country = models.CharField(max_length=32)
-    amount_ok = models.CharField(max_length=32)
-    tax = models.CharField(max_length=32)
-    amount_base = models.CharField(max_length=32)
-    currency_code = models.CharField(max_length=4)
+    amount = models.TextField()
+    amount_country = models.TextField()
+    amount_ok = models.TextField()
+    tax = models.TextField()
+    amount_base = models.TextField()
+    currency_code = models.TextField()
 
     class Meta:
         abstract = True
 
 
 class AbstractCreditCardSegment(models.Model):
-    cardnumber = models.CharField(max_length=32)
+    cardnumber = models.TextField()
     quotas = models.PositiveSmallIntegerField()
 
     class Meta:
@@ -83,18 +83,18 @@ class AbstractCreditCardSegment(models.Model):
 
 
 class AbstractTransactionSegment(models.Model):
-    transaction_id = models.CharField(max_length=64)
-    transaction_state = models.CharField(max_length=16)
-    bank_name = models.CharField(max_length=128)
-    response = models.CharField(max_length=16)
-    approval_code = models.CharField(max_length=16)
-    transaction_date = models.CharField(max_length=32)
-    cod_response = models.CharField(max_length=8)
-    response_reason_text = models.CharField(max_length=64)
-    errorcode = models.CharField(max_length=16)
-    cod_transaction_state = models.CharField(max_length=8)
-    business = models.CharField(max_length=256)
-    franchise = models.CharField(max_length=8)
+    transaction_id = models.TextField()
+    transaction_state = models.TextField()
+    bank_name = models.TextField()
+    response = models.TextField()
+    approval_code = models.TextField()
+    transaction_date = models.TextField()
+    cod_response = models.TextField()
+    response_reason_text = models.TextField()
+    errorcode = models.TextField()
+    cod_transaction_state = models.TextField()
+    business = models.TextField()
+    franchise = models.TextField()
 
     class Meta:
         abstract = True
@@ -148,19 +148,19 @@ class AbstractTransactionSegment(models.Model):
 
 
 class AbstractCustomerSegment(models.Model):
-    cust_id_cliente = models.CharField(max_length=128)
-    customer_doctype = models.CharField(max_length=3)
-    customer_document = models.CharField(max_length=16)
-    customer_name = models.CharField(max_length=128)
-    customer_lastname = models.CharField(max_length=128)
-    customer_email = models.CharField(max_length=128)
-    customer_phone = models.CharField(max_length=32)
-    customer_movil = models.CharField(max_length=32)
-    customer_ind_pais = models.CharField(max_length=32)
-    customer_country = models.CharField(max_length=32)
-    customer_city = models.CharField(max_length=32)
+    cust_id_cliente = models.TextField()
+    customer_doctype = models.TextField()
+    customer_document = models.TextField()
+    customer_name = models.TextField()
+    customer_lastname = models.TextField()
+    customer_email = models.TextField()
+    customer_phone = models.TextField()
+    customer_movil = models.TextField()
+    customer_ind_pais = models.TextField()
+    customer_country = models.TextField()
+    customer_city = models.TextField()
     customer_address = models.TextField()
-    customer_ip = models.CharField(max_length=16)
+    customer_ip = models.TextField()
 
     class Meta:
         abstract = True
@@ -179,9 +179,9 @@ class AbstractPaymentConfirmation(AbstractCustomerSegment,
 
 
 class PaymentConfirmation(AbstractPaymentConfirmation):
-    invoice_id = models.CharField(max_length=128)
-    ref_payco = models.CharField(max_length=128)
-    signature = models.CharField(max_length=256)
+    invoice_id = models.TextField()
+    ref_payco = models.TextField()
+    signature = models.TextField()
     description = models.TextField()
 
     test_request = models.BooleanField()
