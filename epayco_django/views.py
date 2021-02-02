@@ -23,8 +23,9 @@ class ConfirmationView(View):
             data[k.replace('x_', '')] = v
         # TODO: Validate name consistency across all abstract models to prevent things like: id_user and customer_id.
         # Invert invoice name to keep the names consistent
-        data['invoice_id'] = data['id_invoice']
-        del data['id_invoice']
+        if 'id_invoice' in data:
+            data['invoice_id'] = data['id_invoice']
+            del data['id_invoice']
 
         # Get boolean fron the test_request attribute
         data['test_request'] = data['test_request'] == 'TRUE'
