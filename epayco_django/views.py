@@ -27,8 +27,10 @@ class ConfirmationView(View):
             data['invoice_id'] = data['id_invoice']
             del data['id_invoice']
 
-        # Get boolean fron the test_request attribute
-        data['test_request'] = data['test_request'] == 'TRUE'
+        if 'test_request' in data:
+            # Get boolean fron the test_request attribute
+            data['test_request'] = data['test_request'] == 'TRUE'
+
         data['raw'] = json.dumps(request.POST)
 
         # The AbstractFlagSegment's model's save method does the flagging validations.
